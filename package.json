@@ -1,6 +1,6 @@
 {
     "name": "auto-increment-plugin",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "keywords": [ "mongoose", "plugin", "auto-increment" ],
     "description": "Mongoose Auto Increment Plugin",
     "author": "Coz <cozitive.dev@gmail.com>",
@@ -11,10 +11,10 @@
     },
     "bugs": "https://github.com/cozitive/auto-increment-plugin/issues",
     "files": [
-        "./index.js",
-        "./index.d.ts"
+        "./dist/",
+        "./lib/"
     ],
-    "main": "./index.js",
+    "main": "./dist/auto-increment-plugin.min.js",
     "dependencies": {
         "mongoose": "^5.11.18"
     },
