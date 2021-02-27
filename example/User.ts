@@ -1,11 +1,6 @@
 import { Document, Schema, model } from 'mongoose'
 import AutoIncrementPlugin from 'auto-increment-plugin'
 
-interface UserInterface extends Document {
-    id: number
-    username: string
-}
-
 const UserSchema = new Schema({
     username: {
         type: String,
@@ -17,7 +12,9 @@ const UserSchema = new Schema({
 
 UserSchema.plugin(AutoIncrementPlugin, {
     model_name: 'User',
+    field: 'my_id',
+    id_model: 'MyId',
 })
 
-export default model<UserInterface>('User', UserSchema)
-export { UserInterface, UserSchema }
+export default model('User', UserSchema)
+export { UserSchema }
