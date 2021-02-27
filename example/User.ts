@@ -1,4 +1,4 @@
-import { Document, Schema, model } from 'mongoose'
+import { Schema, model } from 'mongoose'
 import AutoIncrementPlugin from 'auto-increment-plugin'
 
 const UserSchema = new Schema({
