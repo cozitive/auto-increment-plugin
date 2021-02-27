@@ -1,8 +1,12 @@
 import { Schema, model, Model } from 'mongoose'
 
-function createIdModel(id_model_name: string): Model<any> {
+function createIdModel(id_model_name: string): void {
     const IdSchema = new Schema({ id: Number })
-    return model(id_model_name, IdSchema)
+    model(id_model_name, IdSchema)
+}
+
+function getIdModel(id_model_name: string): Model<any> {
+    return model(id_model_name)
 }
 
 async function setIdModel(id_model: Model<any>): Promise<void> {
@@ -29,12 +33,14 @@ async function setAutoIncrement(obj: any, id_model: Model<any>, field: string): 
 }
 
 export default function (schema: Schema, options: Options) {
-    const model_upper = options.model.charAt(0).toUpperCase() + options.model.slice(1)
-    const id_model = options.id_model ? options.id_model : `${model_upper}Id`
+    const model_name = options.model_name.charAt(0).toUpperCase() + options.model_name.slice(1)
+    const id_model = options.id_model ? options.id_model : `${model_name}Id`
     const field = options.field ? options.field : 'id'
+    createIdModel(id_model)
+    schema.add({ [field]: Number })
 
-    const Id = createIdModel(id_model)
     schema.post('save', async function (this: any) {
+        const Id = getIdModel(id_model)
         await setIdModel(Id)
         await setAutoIncrement(this, Id, field)
     })

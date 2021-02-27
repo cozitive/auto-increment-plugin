@@ -1,5 +1,5 @@
 interface Options {
-    model: string
+    model_name: string
     field?: string
     id_model?: string
 }

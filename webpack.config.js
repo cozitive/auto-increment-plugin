@@ -6,7 +6,7 @@ const config = {
     entry: './lib/index.ts',
     output: {
         path: path.join(__dirname, 'dist'),
-        publicPath: './dist',
+        publicPath: './dist/',
         library: 'auto-increment-plugin',
     },
     module: {

@@ -6,6 +6,10 @@ test/build/
 
 # Configs
 .env.test
+.editorconfig
+.gitignore
+tsconfig.json
+webpack.config.js
 
 # Etc
 .DS_Store
